@@ -1,21 +1,22 @@
 #[derive(Debug)]
-enum ip_address_kind {
-    v4,
-    v6,
-}
-#[derive(Debug)]
-struct ipAddress {
-    kind: ip_address_kind,
-    address: String,
+enum Coins {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
 }
 
-impl ipAddress {
-    fn new(kind: ip_address_kind, address: String) -> Self {
-        Self { kind, address }
+fn get_value_of_coin(coin: Coins) -> u8 {
+    match coin {
+        Coins::Penny => 1,
+        Coins::Nickel => 5,
+        Coins::Dime => 10,
+        Coins::Quarter => 25,
     }
 }
 
 fn main() {
-    let new_ip = ipAddress::new(ip_address_kind::v4, String::from("192.168.100.1"));
-    print!("the ip is {:?}", new_ip);
+    let new_coin = Coins::Quarter;
+    let new_coin_value = get_value_of_coin(new_coin);
+    println!("the coin value is {}", new_coin_value);
 }
