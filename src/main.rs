@@ -12,15 +12,47 @@ fn main() {
 
     match third_element {
         Some(third) => {
-            print!("the third element is {} ", third);
+            println!("the third element is {} ", third);
         }
         None => {
-            print!("the third element doesn't exist")
+            println!("the third element doesn't exist")
         }
     }
 
     // using macro to implement a vec
 
-    let mac_prices = vec![1200, 1000, 850];
+    let mut mac_prices = vec![1200, 1000, 850];
     //  after using you can use both get method or access using the indexes
+
+    // iteration over vec
+
+    for i in &mac_prices {
+        println!("mac prices are as followings:  {}", i)
+    }
+
+    // iterating to change the value
+    for i in &mut mac_prices {
+        *i += 50;
+    }
+
+    println!("new Mac Prices after increase are: {:?}", mac_prices);
+
+    // using enum to hold the multiple type of data in vec
+
+    enum SpreadsheetCell {
+        Int(i32),
+        Float(f32),
+        Text(String),
+    }
+
+    let mut row1 = Vec::new();
+
+    row1.push(SpreadsheetCell::Text(String::from("Hello My friend")));
+    row1.push(SpreadsheetCell::Float(22.23));
+
+    let mut _row2 = vec![
+        SpreadsheetCell::Int(11),
+        SpreadsheetCell::Float(22.22),
+        SpreadsheetCell::Text(String::from("Hello there Vec macro")),
+    ];
 }
