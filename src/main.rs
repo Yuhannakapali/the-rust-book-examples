@@ -55,4 +55,14 @@ fn main() {
         SpreadsheetCell::Float(22.22),
         SpreadsheetCell::Text(String::from("Hello there Vec macro")),
     ];
+
+    // using match to get the value from enum
+    match row1[1] {
+        SpreadsheetCell::Int(value) => {
+            println!("the value is {}", value);
+        }
+        _ => {
+            println!("the value is not float");
+        }
+    }
 }
